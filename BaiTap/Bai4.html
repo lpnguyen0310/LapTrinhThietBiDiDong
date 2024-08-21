@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4</title>
+</head>
+
+<body>
+    <h2>Bài tập 4</h2>
+    <script>
+        let calculateTip = (bill) => {
+            // Tinh tien hoa don va tien tiep
+            // Neu hoa don tu 50  den 300 thi tien tip la 15% con lai la 20%
+            let tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+            let total = bill + tip;
+            console.log(`The bill was ${bill.toFixed(2)}, the tip was ${tip.toFixed(2)}, and the total value ${total.toFixed(2)}`);
+        }
+
+        // Test data
+        calculateTip(275);
+        calculateTip(40);
+        calculateTip(430);
+    </script>
+</body>
+
+</html>
