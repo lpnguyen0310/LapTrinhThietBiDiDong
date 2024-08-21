@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Bài Tập 5</h2>
+    <script>
+        // Gọi hàm tính điểm trung bình và so sánh điểm trung bình 
+        let calcAverage = (score1, score2, score3) => (score1 + score2 + score3) / 3;
+
+        // Hàm so sánh điểm trung bình
+        let checkWinner = (avgDolphins, avgKoalas) => {
+            if (avgDolphins >= 2 * avgKoalas) {
+                console.log(`Dolphins win (${avgDolphins} vs. ${avgKoalas})`);
+            } else if (avgKoalas >= 2 * avgDolphins) {
+                console.log(`Koalas win (${avgKoalas} vs. ${avgDolphins})`);
+            } else {
+                console.log("No team wins!");
+            }
+        }
+
+        // Dữ liệu mẫu
+        let avgDolphins1 = calcAverage(44, 23, 71);
+        let avgKoalas1 = calcAverage(65, 54, 49);
+
+        let avgDolphins2 = calcAverage(85, 54, 41);
+        let avgKoalas2 = calcAverage(23, 34, 27);
+
+        // So sánh điểm trung bình
+        checkWinner(avgDolphins1, avgKoalas1);
+        checkWinner(avgDolphins2, avgKoalas2);
+    </script>
+</body>
+
+</html>
