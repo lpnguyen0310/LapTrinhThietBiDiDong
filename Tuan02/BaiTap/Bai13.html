@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 13</title>
+</head>
+<body>
+    <!-- Tiếp tục với ứng dụng cá cược bóng đá của chúng ta! Lần này, chúng ta có một bản đồ có tên là
+'gameEvents' (xem bên dưới) với nhật ký về các sự kiện đã diễn ra trong
+trò chơi. Các giá trị là chính các sự kiện và các khóa là số phút mà
+mỗi sự kiện đã diễn ra (một trận bóng đá có 90 phút cộng thêm một số thời gian bù giờ).
+Nhiệm vụ của bạn:
+1. Tạo một mảng 'sự kiện' gồm các sự kiện khác nhau đã diễn ra trong trò chơi (không
+trùng lặp)
+2. Sau khi trò chơi kết thúc, người ta phát hiện ra rằng thẻ vàng từ phút 64
+là không công bằng. Vì vậy, hãy xóa sự kiện này khỏi nhật ký sự kiện của trò chơi.
+3. Tính toán và ghi chuỗi sau vào bảng điều khiển: "Một sự kiện đã xảy ra, trung bình
+sau mỗi 9 phút" (lưu ý rằng một trận đấu có 90 phút)
+4. Lặp lại 'gameEvents' và ghi từng phần tử vào bảng điều khiển, đánh dấu
+là trong hiệp một hay hiệp hai (sau 45 phút) của trận đấu, như thế này:
+[HIỆP MỘT] 17: ⚽ BÀN THẮNG -->
+    <h2>Bài 13</h2>
+    <script>
+        
+        const game = {
+            team1: 'Bayern Munich',
+            team2: 'Borrussia Dortmund',
+            players: [
+            [
+            'Neuer',
+            'Pavard',
+            'Martinez',
+            'Alaba',
+            'Davies',
+            'Kimmich',
+            'Goretzka',
+            'Coman',
+            'Muller',
+            'Gnarby',
+            'Lewandowski',
+            ],
+            [
+            'Burki',
+            'Schulz',
+            'Hummels',
+            'Akanji',
+            'Hakimi',
+            'Weigl',
+            'Witsel',
+            'Hazard',
+            'Brandt',
+            'Sancho',
+            'Gotze',
+            ],
+            ],
+            score: '4:0',
+            scored: ['Lewandowski', 'Gnarby', 'Lewandowski',
+            'Hummels'],
+            date: 'Nov 9th, 2037',
+            odds: {
+            team1: 1.33,
+            x: 3.25,
+            team2: 6.5,
+            },
+            };
+            // Step 1: Create an array 'events' of the different game events that happened (no duplicates)
+            const gameEvents = new Map([
+                [17, '⚽ GOAL'],
+                [36, '� Substitution'],
+                [47, '⚽ GOAL'],
+                [61, '� Substitution'],
+                [64, '� Yellow card'],
+                [69, '� Red card'],
+                [70, '� Substitution'],
+                [72, '� Substitution'],
+                [76, '⚽ GOAL'],
+                [80, '⚽ GOAL'],
+                [92, '� Yellow card'],
+                ]);
+
+            const events = [...new Set(gameEvents.values())];
+            console.log(events);
+
+            // Step 2: Remove the unfair yellow card event from minute 64
+            gameEvents.delete(64);
+
+            // Step 3: Compute and log the average time between events
+            const totalMinutes = 90;
+            const averageTime = totalMinutes / gameEvents.size;
+            console.log(`An event happened, on average, every ${averageTime.toFixed(2)} minutes`);
+
+            // Step 4: Loop over 'gameEvents' and log each element to the console
+            for (const [minute, event] of gameEvents) {
+                const half = minute <= 45 ? '[FIRST HALF]' : '[SECOND HALF]';
+                console.log(`${half} ${minute}: ${event}`);
+            }
+
+            
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 14</title>
+</head>
+<body>
+    <h2>Bài 14</h2>
+    <textarea id="inputText" rows="10" cols="30"></textarea>
+    <button id="convertButton">Convert</button>
+    <script>
+         document.getElementById('convertButton').addEventListener('click', function() {
+            const text = document.getElementById('inputText').value;
+            const lines = text.split('\n');
+            lines.forEach((line, index) => {
+                const trimmedLine = line.trim().toLowerCase();
+                const words = trimmedLine.split('_');
+                const camelCase = words.map((word, i) => i === 0 ? word : word[0].toUpperCase() + word.slice(1)).join('');
+                const checkmarks = '✅'.repeat(index + 1);
+                console.log(`${camelCase} ${checkmarks}`);
+            });
+        });
+
+
+    </script>
+</body>
+</html>
