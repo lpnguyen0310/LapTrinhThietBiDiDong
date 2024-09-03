@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 16</title>
+</head>
+<body>
+    <h2>Bài 16</h2>
+    <h1 id="header">Hello World</h1>
+    <script>
+        (function() {
+            const header = document.querySelector('h1');
+            document.body.addEventListener('click', function() {
+                header.style.color = 'red';
+            });
+        })();
+        
+    </script>
+</body>
+</html>
