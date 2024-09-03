@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 20</title>
+</head>
+<body>
+    <h2>Bài 20</h2>
+    <script>
+        // Test data
+        const dogs = [
+            { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+            { weight: 8, curFood: 200, owners: ['Matilda'] },
+            { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+            { weight: 32, curFood: 340, owners: ['Michael'] },
+        ];
+
+        // Step 1: Tính lượng thức ăn khuyến nghị cho mỗi con chó
+        dogs.forEach(dog => {
+            dog.recommendedFood = Math.round(dog.weight ** 0.75 * 28);
+        });
+
+        // Step 2: Tìm chó của Sarah và kiểm tra chó đó ăn nhiều hay ít
+        const sarahsDog = dogs.find(dog => dog.owners.includes('Sarah'));
+        console.log(`Sarah's dog is eating too ${sarahsDog.curFood > sarahsDog.recommendedFood ? 'much' : 'little'}`);
+
+        // Step 3: Tạo mảng chứa tên các chủ nhân có chó ăn nhiều và ít
+        const ownersEatTooMuch = dogs.filter(dog => dog.curFood > dog.recommendedFood).flatMap(dog => dog.owners);
+        const ownersEatTooLittle = dogs.filter(dog => dog.curFood < dog.recommendedFood).flatMap(dog => dog.owners);
+
+        // Step 4: Thông báo chủ nhân có chó ăn nhiều và ít
+        console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
+        console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
+
+        // Step 5: Kiểm tra xem tất cả các chó có ăn lượng thức ăn khuyến nghị không
+        console.log(dogs.some(dog => dog.curFood === dog.recommendedFood));
+
+        // Step 6: Kiểm tra xem có chó nào ăn một lượng thức ăn khá ổn không
+        const isEatingOkay = dog => dog.curFood > dog.recommendedFood * 0.9 && dog.curFood < dog.recommendedFood * 1.1;
+        console.log(dogs.some(isEatingOkay));
+
+        // Step 7: Tạo mảng chứa các chó ăn một lượng thức ăn khá ổn
+        const dogsEatingOkay = dogs.filter(isEatingOkay);
+        console.log(dogsEatingOkay);
+
+        // Step 8: Tạo mảng chứa các chó ăn nhiều hoặc ít so với lượng thức ăn khuyến nghị
+        const dogsSorted = dogs.slice().sort((a, b) => a.recommendedFood - b.recommendedFood);
+        console.log(dogsSorted);
+
+    </script>
+</body>
+</html>
